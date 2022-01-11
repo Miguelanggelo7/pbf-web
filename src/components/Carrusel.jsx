@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core";
 import makeCarousel from 'react-reveal/makeCarousel';
 import Slide from 'react-reveal/Slide';
@@ -29,7 +29,21 @@ const useStyles = makeStyles({
 });
 
 const Carrusel = (props) => {
+  const [carrousel, setCarrousel] = useState(null);
   const classes = useStyles();
+
+  useEffect(async () => {
+    const response = await fetch("http://localhost:5000/api/carrousel", {
+      method: "GET",
+    });
+
+    if (!response.ok) {
+      console.log("error")
+    }
+    const data = await response.json();
+    setCarrousel(data);
+  }, []);
+
   const CarouselUI = ({ position, handleClick, children }) => (
     <div className={classes.carrusel}>
       {children}
@@ -39,21 +53,15 @@ const Carrusel = (props) => {
   
   return (
     <Carousel>
-      <Slide right>
-        <div className={classes.contentImage}>
-          <img className={classes.contentImage} src="https://www.drfisio.es/wp-content/uploads/2019/12/fisioterapia-estetica.jpg"/>
-        </div>
-      </Slide>
-      <Slide right>
-        <div className={classes.contentImage}>
-          <img className={classes.contentImage} src="https://www.drfisio.es/wp-content/uploads/2019/12/fisioterapia-estetica.jpg"/>
-        </div>
-      </Slide>
-      <Slide right>
-        <div className={classes.contentImage}>
-          <img className={classes.contentImage} src="https://www.drfisio.es/wp-content/uploads/2019/12/fisioterapia-estetica.jpg"/>
-        </div>
-      </Slide>
+      {
+        carrousel && carrousel.map(item => (
+          <Slide right>
+            <div className={classes.contentImage}>
+              <img className={classes.contentImage} key={item.id} src={item.url}/>
+            </div>
+          </Slide>
+        ))
+      }
     </Carousel>
   );
 };
