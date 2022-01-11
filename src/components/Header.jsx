@@ -1,24 +1,26 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { makeStyles } from "@material-ui/core";
 import LogoTextSVG from "../assets/logoText.svg"
 
 
 // ESTILOS
 const useStyles = makeStyles({
-  headerBackground: {
+  headerBackground: props => ({
     top: '0',
     left: '0',
     width: '100%',
     zIndex: '10',
-    backgroundColor: '#F6EEEE',
+    backgroundColor: props.backgroundColor,
     height: '100px',
     color: '#fff',
     position: 'fixed',
     textAlign: 'center',
+    boxShadow: props.boxShadow,
+    transition: 'all .5s',
     "@media (max-width: 650pt)": {
-      height: '130px',
+      height: '120px',
     }
-  },
+  }),
   headerLogo: {
     paddingTop: '10px',
     display: 'block',
@@ -27,18 +29,18 @@ const useStyles = makeStyles({
   },
   headerButton: {
     textDecoration: 'none',
-    fontSize: '15pt',
     color: '#000',
-    marginLeft: '20pt',
-    marginRight: '20pt',
+    marginLeft: '23pt',
+    marginRight: '23pt',
+    textTransform: 'uppercase',
     '&:hover': {
-      color: '#83BAA6',
+      color: '#8E7AA7',
       cursor: 'pointer',
       transition: 'all .5s'
    },
    "@media (max-width: 650pt)": {
-    marginLeft: '10pt',
-    marginRight: '10pt',
+    marginLeft: '15pt',
+    marginRight: '15pt',
     }
   },
   divisor: {
@@ -49,7 +51,24 @@ const useStyles = makeStyles({
   }
 });
 const Header = (props) => {
-  const classes = useStyles();
+  const [scrollNav, setScrollNav] = useState("#ffffff50");
+  const [shadowNav, setShadowNav] = useState("none");
+  const changeNav = () => {
+    if(window.scrollY >= 80) {
+      setScrollNav("#fff");
+      setShadowNav("1px 1px 1px 1px rgba(50, 50, 0, 0.5)");
+    } else {
+      setScrollNav("#ffffff50");
+      setShadowNav("none");
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', changeNav)
+  }, [])
+
+  const styleProps = {backgroundColor: scrollNav, boxShadow: shadowNav}
+  const classes = useStyles(styleProps);
 
   return (
     <div className={classes.headerBackground}>

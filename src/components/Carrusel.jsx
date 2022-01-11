@@ -14,16 +14,14 @@ const useStyles = makeStyles({
     fontFamily: 'Quicksand',
     bottom: '0',
     backgroundColor: '#fafafa',
-    marginTop: '100px',
-    height: '86vh',
+    height: '100vh',
     "@media (max-width: 650pt)": {
-      marginTop: '130px',
       height: '300px',
     }
   },
   contentImage: {
     width: '100%',
-    height: '86vh',
+    height: '100vh',
     "@media (max-width: 650pt)": {
       height: '300px',
     }
@@ -43,17 +41,17 @@ const Carrusel = (props) => {
     <Carousel>
       <Slide right>
         <div className={classes.contentImage}>
-          <img className={classes.contentImage} src="https://www.centrosideal.com/wp-content/uploads/2020/09/medicina-estetica.jpg"/>
+          <img className={classes.contentImage} src="https://www.drfisio.es/wp-content/uploads/2019/12/fisioterapia-estetica.jpg"/>
         </div>
       </Slide>
       <Slide right>
         <div className={classes.contentImage}>
-          <img className={classes.contentImage} src="https://www.centrosideal.com/wp-content/uploads/2020/09/medicina-estetica.jpg"/>
+          <img className={classes.contentImage} src="https://www.drfisio.es/wp-content/uploads/2019/12/fisioterapia-estetica.jpg"/>
         </div>
       </Slide>
       <Slide right>
         <div className={classes.contentImage}>
-          <img className={classes.contentImage} src="https://www.centrosideal.com/wp-content/uploads/2020/09/medicina-estetica.jpg"/>
+          <img className={classes.contentImage} src="https://www.drfisio.es/wp-content/uploads/2019/12/fisioterapia-estetica.jpg"/>
         </div>
       </Slide>
     </Carousel>
