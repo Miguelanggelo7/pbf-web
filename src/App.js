@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Home from "./pages/Home";
 import Form from "./pages/Form";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {
   unstable_createMuiStrictModeTheme as createMuiTheme,
   ThemeProvider,
@@ -24,7 +25,16 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        <Form/>
+        <Router>  
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/form">
+              <Form />
+            </Route>
+          </Switch>
+        </Router>
       </ThemeProvider>
     </div>
   );

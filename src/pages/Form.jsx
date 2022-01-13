@@ -3,6 +3,7 @@ import { makeStyles, TextField, Button } from "@material-ui/core";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import MuiPhoneNumber from 'material-ui-phone-number';
 import Checkbox from '@mui/material/Checkbox';
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   backIcon: {
@@ -69,7 +70,9 @@ function Home() {
 
   return (
     <div >
-      <ArrowBackIosIcon className={classes.backIcon}/>
+      <Link to="/" >
+        <ArrowBackIosIcon className={classes.backIcon}/>
+      </Link>
       <br/>
       <p className={classes.titleText}>Agenda tu cita</p>
       <div className={classes.inputContainer}>
