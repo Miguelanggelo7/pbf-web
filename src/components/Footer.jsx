@@ -114,7 +114,7 @@ const Header = (props) => {
             <IconButton className={classes.wsIcon} onClick={() => window.open('https://wa.me/+34976279085')}>
               <WhatsAppIcon fontSize={window.matchMedia("(min-width: 650pt)").matches ? "large" : "medium" } className={classes.iconColor}/>
             </IconButton>
-            <IconButton className={classes.fbIcon} >
+            <IconButton className={classes.fbIcon} onClick={() => window.open('https://www.facebook.com/Perfect-Body-Fast-102156152200289/')}>
               <FacebookIcon fontSize={window.matchMedia("(min-width: 650pt)").matches ? "large" : "medium" } className={classes.iconColor}/>
             </IconButton>
           </div>
