@@ -9,11 +9,11 @@ import {
 
 const theme = createMuiTheme({
   palette: {
-    //Azul
+    //Verde
     primary: {
       main: "#83BAA6",
     },
-    //Verde
+    //Morado
     secondary: {
       main: "#8E7AA7",
     },
