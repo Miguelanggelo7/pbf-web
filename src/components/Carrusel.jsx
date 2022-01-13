@@ -40,7 +40,9 @@ const Carrusel = (props) => {
     if (!response.ok) {
       console.log("error")
     }
+
     const data = await response.json();
+    console.log(data)
     setCarrousel(data);
   }, []);
 
@@ -57,7 +59,7 @@ const Carrusel = (props) => {
         carrousel && carrousel.map(item => (
           <Slide right>
             <div className={classes.contentImage}>
-              <img className={classes.contentImage} key={item.id} src={item.url}/>
+              <img className={classes.contentImage} src={item}/>
             </div>
           </Slide>
         ))
