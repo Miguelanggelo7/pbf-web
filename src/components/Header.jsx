@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from "react";
 import { makeStyles } from "@material-ui/core";
-import LogoTextSVG from "../assets/logoText.svg"
-
+import LogoTextSVG from "../assets/logoText.svg";
+import { animateScroll as scroll } from 'react-scroll';
+import { Link as LinkS } from 'react-scroll';
 
 // ESTILOS
 const useStyles = makeStyles({
@@ -74,7 +75,7 @@ const Header = (props) => {
     <div className={classes.headerBackground}>
       <img className={classes.headerLogo} src={LogoTextSVG}/>
       <div className={classes.inlineDiv}> 
-        <a className={classes.headerButton}>Faciales</a>
+        <LinkS smooth={true} duration={1000} spy={true} exact='true' offset={-120} to="faciales" className={classes.headerButton}>Faciales</LinkS>
         <a className={classes.headerButton}>Corporales</a>
         <a className={classes.headerButton}>Muestras</a>
         <div className={classes.divisor} />

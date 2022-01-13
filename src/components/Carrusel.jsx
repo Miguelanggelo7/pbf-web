@@ -17,6 +17,7 @@ const useStyles = makeStyles({
     height: '100vh',
     "@media (max-width: 650pt)": {
       height: '300px',
+      marginTop:'120px',
     }
   },
   contentImage: {

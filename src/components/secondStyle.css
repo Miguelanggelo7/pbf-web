@@ -1,6 +1,14 @@
 .swiper {
-    width: 100%;
-    height: 86vh;
+    width: 65vh;
+    height: 65vh;
+    margin-bottom: 50pt;
+  }
+
+  @media (max-width: 650pt) {
+    .swiper {
+      width: 100%;
+      height: 65vh;
+    }
   }
   
   .swiper-pagination-bullet-active {
