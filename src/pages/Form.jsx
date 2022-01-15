@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import { makeStyles, TextField, Button } from "@material-ui/core";
+import { makeStyles, TextField, Button, Dialog, Card } from "@material-ui/core";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import MuiPhoneNumber from 'material-ui-phone-number';
 import Checkbox from '@mui/material/Checkbox';
 import { Link } from "react-router-dom";
+import TermsDialog from '../components/TermsDialog';
 
 const useStyles = makeStyles({
   backIcon: {
@@ -11,8 +12,14 @@ const useStyles = makeStyles({
     marginLeft: '20pt',
     left: '0',
     position: 'absolute',
+    color: '#000',
     '&:hover': {
       cursor: 'pointer',
+      color: '#000',
+    },
+    '&:active': {
+      cursor: 'pointer',
+      color: '#000',
     },
   },
   titleText: {
@@ -37,12 +44,16 @@ const useStyles = makeStyles({
   terms: {
     display: 'inline-flex',
     marginTop: '20pt',
+    '&:hover': {
+      cursor: 'pointer',
+    },
   },
   termsText: {
     fontSize: '10pt',
   },
   linkTerms: {
-    color: '#000'
+    color: '#000',
+    textDecoration: 'underline',
   },
   buttonForm: {
     background: 'linear-gradient(270deg, #9082BC 0%, rgba(144, 130, 188, 0) 100%), #83BAA6',
@@ -57,12 +68,18 @@ const useStyles = makeStyles({
       transition: 'all .5s',
       color: '#fff',
     },
-  }
+  },
+  dialog: {
+    width: '80vw',
+    maxWidth: '300pt',
+    margin: 'auto',
+  },
 });
 
 function Home() {
   const classes = useStyles();
   const [isChecked, setIsChecked] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const acceptTerms = () => {
     isChecked ? setIsChecked(false) : setIsChecked(true);
@@ -92,12 +109,16 @@ function Home() {
             }}
             onChange={acceptTerms}
           />
-          <p className={classes.termsText}>Acepto la <a className={classes.linkTerms} href="#">política de privacidad y de protección de datos</a></p>
+          <p className={classes.termsText}>Acepto la <a className={classes.linkTerms} onClick={() => setOpen(true)}>política de privacidad y de protección de datos</a></p>
         </div>
         <br/>
         <Button disabled={!isChecked} className={classes.buttonForm}>
           ENVIAR
         </Button>
+
+        <TermsDialog open={open} onClose={() => setOpen(false)} />
+
+
       </div>
     </div>
   );

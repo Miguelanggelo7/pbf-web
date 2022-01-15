@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core";
 import LogoTextSVG from "../assets/logoText.svg";
 import { animateScroll as scroll } from 'react-scroll';
 import { Link as LinkS } from 'react-scroll';
+import { Link as LinkR } from 'react-router-dom';
 
 // ESTILOS
 const useStyles = makeStyles({
@@ -80,7 +81,7 @@ const Header = (props) => {
         <a className={classes.headerButton}>Muestras</a>
         <div className={classes.divisor} />
         <a className={classes.headerButton}>Sobre nosotros</a>
-        <a className={classes.headerButton}>Agenda tu cita</a>
+        <LinkR to="/form" className={classes.headerButton}>Agenda tu cita</LinkR>
       </div>
     </div>
   )

@@ -7,6 +7,7 @@ import {
   unstable_createMuiStrictModeTheme as createMuiTheme,
   ThemeProvider,
 } from "@material-ui/core/styles";
+import TermsDialog from './components/TermsDialog';
 
 const theme = createMuiTheme({
   palette: {
@@ -32,6 +33,9 @@ function App() {
             </Route>
             <Route exact path="/form">
               <Form />
+            </Route>
+            <Route exact path="/terms">
+              <TermsDialog/>
             </Route>
           </Switch>
         </Router>

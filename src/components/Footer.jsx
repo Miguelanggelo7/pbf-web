@@ -6,6 +6,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import EmailIcon from '@mui/icons-material/Email';
+import TermsDialog from './TermsDialog';
 
 // ESTILOS
 const useStyles = makeStyles({
@@ -62,8 +63,12 @@ const useStyles = makeStyles({
     },
     infoText: {
       color: "#fff",
+      textDecoration: 'underline',
       "@media (max-width: 650pt)": {
         fontSize: '8pt',
+      },
+      '&:hover': {
+        cursor: 'pointer',
       },
     },
     div1: {
@@ -98,13 +103,14 @@ const useStyles = makeStyles({
 });
 const Header = (props) => {
   const classes = useStyles();
+  const [open, setOpen] = useState(false);
 
   return (
     <div className={classes.containerFooter}>
       <div className={classes.flexDiv}>
         <div className={classes.infoFooter}>
           <div className={classes.div1}/>
-          <a className={classes.infoText} href="#">Politica de privacidad</a>
+          <a className={classes.infoText} onClick={() => setOpen(true)}>Politica de privacidad</a>
           <div className={classes.div1}/>
           <a className={classes.infoText} href="#">Quienes somos</a>
         </div>
@@ -130,7 +136,9 @@ const Header = (props) => {
         <FmdGoodIcon className={classes.locationIcon}/>
         <a target="_blank" className={classes.location} href="https://maps.apple.com/?address=Camino%20de%20las%20Torres,%20109,%2050007%20Zaragoza,%20Espa%C3%B1a&ll=41.639900,-0.885900&_ext=EiYpTr0kdVPRREAxS14G3VKK7L85zJJK0XnSREBBOXCvnNon7L9QBA%3D%3D&t=m">Caminos de las Torres 109, 50007 Zaragoza, España</a>
       </div>
-    </div>
+
+      <TermsDialog open={open} onClose={() => setOpen(false)} />
+    </div>  
   )
 };
 
