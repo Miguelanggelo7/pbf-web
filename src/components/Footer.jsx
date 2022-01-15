@@ -12,7 +12,7 @@ import TermsDialog from './TermsDialog';
 const useStyles = makeStyles({
     containerFooter: {
       width: '100%',
-      height: '300px',
+      height: '200px',
       background: 'linear-gradient(270deg, #9082BC 0%, rgba(144, 130, 188, 0) 100%), #83BAA6',
       color: '#fff',
       "@media (max-width: 650pt)": {
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     },
     LogoFooter: {
       width: '32vw',
-      height: '200px',
+      height: '120px',
       display: 'block',
       margin: 'auto',
       "@media (max-width: 650pt)": {
@@ -29,7 +29,7 @@ const useStyles = makeStyles({
       }
     },
     divLocation: {
-      marginTop: '50px',
+      marginTop: '0px',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
@@ -63,7 +63,6 @@ const useStyles = makeStyles({
     },
     infoText: {
       color: "#fff",
-      textDecoration: 'underline',
       "@media (max-width: 650pt)": {
         fontSize: '8pt',
       },
@@ -72,14 +71,14 @@ const useStyles = makeStyles({
       },
     },
     div1: {
-      marginTop: '80px',
+      marginTop: '60px',
       "@media (max-width: 650pt)": {
         marginTop: '20px',
       },
     },
     topIcons: {
-      marginTop: '10%',
-      marginBottom: '10%',
+      marginTop: '5%',
+      marginBottom: '5%',
       "@media (max-width: 650pt)": {
         marginTop: '5%',
         marginBottom: '0',
@@ -112,7 +111,7 @@ const Header = (props) => {
           <div className={classes.div1}/>
           <a className={classes.infoText} onClick={() => setOpen(true)}>Politica de privacidad</a>
           <div className={classes.div1}/>
-          <a className={classes.infoText} href="#">Quienes somos</a>
+          <a className={classes.infoText}>Quienes somos</a>
         </div>
         <img className={classes.LogoFooter} src={LogoWomanSVG}/>
         <div className={classes.socialFooter}>
