@@ -60,7 +60,7 @@ const Carrusel = (props) => {
         carrousel && carrousel.map(item => (
           <Slide right>
             <div className={classes.contentImage}>
-              <img className={classes.contentImage} src={item}/>
+              <img className={classes.contentImage} key={item.id} src={item.url}/>
             </div>
           </Slide>
         ))

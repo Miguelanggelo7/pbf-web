@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { makeStyles } from "@material-ui/core";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, {
@@ -24,6 +24,24 @@ const useStyles = makeStyles({
 
 const SecondCarrusel = (props) => {
   const classes = useStyles();
+  const [faciales, setFaciales] = useState(null);
+
+  useEffect(() => {
+    const getData = async() => {
+      const response = await fetch("http://localhost:5000/api/faciales", {
+        method: "GET",
+      });
+
+      if (!response.ok) {
+        console.log("error")
+      }
+
+      const data = await response.json();
+      setFaciales(data);
+    }
+
+    getData();
+  }, []);
 
   const navigation = window.matchMedia("(min-width: 650pt)").matches ? true : false;
   
@@ -31,16 +49,12 @@ const SecondCarrusel = (props) => {
     <div className={classes.box}>
       <Swiper pagination={true} navigation={navigation} className="mySwiper" pagination={{"clickable" : true}} >
         <SwiperSlide>
-          <InfoCarrusel title={'Botox'} image={'https://www.hola.com/imagenes/estar-bien/20211216201392/botox-verdades-y-mentiras/1-31-641/botox-2t-t.jpg'} text={'Botox muy bueno'}/>
+          {
+            faciales && faciales.map(item => (
+              <InfoCarrusel title={item.title} image={item.url} text={item.txt}/>
+            ))
+          }
         </SwiperSlide>
-        <SwiperSlide >Slide 2</SwiperSlide>
-        <SwiperSlide >Slide 3</SwiperSlide>
-        <SwiperSlide >Slide 4</SwiperSlide>
-        <SwiperSlide >Slide 5</SwiperSlide>
-        <SwiperSlide >Slide 6</SwiperSlide>
-        <SwiperSlide >Slide 7</SwiperSlide>
-        <SwiperSlide >Slide 8</SwiperSlide>
-        <SwiperSlide >Slide 9</SwiperSlide>
       </Swiper>
     </div>
   );
