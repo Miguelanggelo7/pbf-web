@@ -18,6 +18,9 @@ const useStyles = makeStyles({
     display: 'block',
     margin: 'auto',
     paddingTop: '10%',
+    "@media (max-width: 650pt)": {
+      paddingTop: '30%',
+    },
   }
 });
 const Loading = (props) => {
