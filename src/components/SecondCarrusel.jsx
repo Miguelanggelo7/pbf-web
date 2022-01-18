@@ -48,13 +48,13 @@ const SecondCarrusel = (props) => {
   return (
     <div className={classes.box}>
       <Swiper pagination={true} navigation={navigation} className="mySwiper" pagination={{"clickable" : true}} >
-        <SwiperSlide>
-          {
-            faciales && faciales.map(item => (
+        {
+          faciales && faciales.map(item => (
+            <SwiperSlide>
               <InfoCarrusel title={item.title} image={item.url} text={item.txt}/>
-            ))
-          }
-        </SwiperSlide>
+            </SwiperSlide>
+          ))
+        }
       </Swiper>
     </div>
   );
