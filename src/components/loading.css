@@ -1,17 +1,17 @@
 .logoLoadingg{
-    animation: logo-animation linear 2s;
+    animation: logo-animation linear 3s;
     animation-iteration-count:  infinite;
     transform-origin: 50% 50%;
-    -webkit-animation: logo-animation linear 2s;
+    -webkit-animation: logo-animation linear 3s;
     -webkit-animation-iteration-count:  infinite;
     -webkit-transform-origin: 50% 50%;
-    -moz-animation: logo-animation linear 2s;
+    -moz-animation: logo-animation linear 3s;
     -moz-animation-iteration-count:  infinite;
     -moz-transform-origin: 50% 50%;
-    -o-animation: logo-animation linear 2s;
+    -o-animation: logo-animation linear 3s;
     -o-animation-iteration-count:  infinite;
     -o-transform-origin: 50% 50%;
-    -ms-animation: logo-animation linear 2s;
+    -ms-animation: logo-animation linear 3s;
     -ms-animation-iteration-count:  infinite;
     -ms-transform-origin: 50% 50%;
     vertical-align:middle;
@@ -22,7 +22,7 @@
       opacity:1;
     }
     50% {
-      opacity:0;
+      opacity:0.50;
     }
     100% {
       opacity:0.990099773451273;
@@ -37,7 +37,7 @@
       opacity:1;
     }
     50% {
-      opacity:0;
+      opacity:0.50;
     }
     100% {
       opacity:0.990099773451273;
@@ -52,7 +52,7 @@
       opacity:1;
     }
     50% {
-      opacity:0;
+      opacity:0.50;
     }
     100% {
       opacity:0.990099773451273;
@@ -67,7 +67,7 @@
       opacity:1;
     }
     50% {
-      opacity:0;
+      opacity:0.50;
     }
     100% {
       opacity:0.990099773451273;
@@ -82,7 +82,7 @@
       opacity:1;
     }
     50% {
-      opacity:0;
+      opacity:0.50;
     }
     100% {
       opacity:0.990099773451273;

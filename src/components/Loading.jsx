@@ -1,7 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
-import loadingLogo from "../assets/logoloading.png";
-import backgroundImage from "../assets/backgroundpbf.jpg";
+import loadingLogo from "../assets/logoprueba.png";
 import './loading.css';
 
 // ESTILOS
@@ -9,10 +8,6 @@ const useStyles = makeStyles({
   infoContainer: {
     width: '100vw',
     height: '100vh',
-    backgroundImage: `url(${backgroundImage})`,
-    backgroundPosition: 'center', 
-    backgroundSize: 'cover', 
-    backgroundRepeat: 'no-repeat',
   },
   image: {
     display: 'block',
