@@ -1,0 +1,93 @@
+.logoLoadingg{
+    animation: logo-animation linear 2s;
+    animation-iteration-count:  infinite;
+    transform-origin: 50% 50%;
+    -webkit-animation: logo-animation linear 2s;
+    -webkit-animation-iteration-count:  infinite;
+    -webkit-transform-origin: 50% 50%;
+    -moz-animation: logo-animation linear 2s;
+    -moz-animation-iteration-count:  infinite;
+    -moz-transform-origin: 50% 50%;
+    -o-animation: logo-animation linear 2s;
+    -o-animation-iteration-count:  infinite;
+    -o-transform-origin: 50% 50%;
+    -ms-animation: logo-animation linear 2s;
+    -ms-animation-iteration-count:  infinite;
+    -ms-transform-origin: 50% 50%;
+    vertical-align:middle;
+  }
+  
+  @keyframes logo-animation{
+    0% {
+      opacity:1;
+    }
+    50% {
+      opacity:0;
+    }
+    100% {
+      opacity:0.990099773451273;
+    }
+    101% {
+      opacity:0.99;
+    }
+  }
+  
+  @-moz-keyframes logo-animation{
+    0% {
+      opacity:1;
+    }
+    50% {
+      opacity:0;
+    }
+    100% {
+      opacity:0.990099773451273;
+    }
+    101% {
+      opacity:0.99;
+    }
+  }
+  
+  @-webkit-keyframes logo-animation {
+    0% {
+      opacity:1;
+    }
+    50% {
+      opacity:0;
+    }
+    100% {
+      opacity:0.990099773451273;
+    }
+    101% {
+      opacity:0.99;
+    }
+  }
+  
+  @-o-keyframes logo-animation {
+    0% {
+      opacity:1;
+    }
+    50% {
+      opacity:0;
+    }
+    100% {
+      opacity:0.990099773451273;
+    }
+    101% {
+      opacity:0.99;
+    }
+  }
+  
+  @-ms-keyframes logo-animation {
+    0% {
+      opacity:1;
+    }
+    50% {
+      opacity:0;
+    }
+    100% {
+      opacity:0.990099773451273;
+    }
+    101% {
+      opacity:0.99;
+    }
+  }
