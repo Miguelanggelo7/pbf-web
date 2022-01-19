@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core";
 // ESTILOS
 const useStyles = makeStyles({
   infoContainer: {
+    justifyContent: 'center',
     "@media (min-width: 800pt)": {
       display: 'inline-flex',
     },
@@ -15,8 +16,8 @@ const useStyles = makeStyles({
   },
   contentImage: {
     width: '200pt',
-    minWidth: '200pt',
-    minHeight: '200pt',
+    minWidth: '300pt',
+    minHeight: '150pt',
     height: '200pt',
     marginLeft: '60pt',
     "@media (max-width: 800pt)": {
@@ -25,17 +26,23 @@ const useStyles = makeStyles({
       marginLeft: '0pt',
     },
     backgroundSize: 'cover',
+    "@media (min-width: 800pt)": {
+      filter: 'drop-shadow(2px 2px 2px rgba(50, 50, 0, 0.5))',
+    },
   },
   image: {
     borderRadius: '10pt',
     width: '200pt',
-    minWidth: '200pt',
+    minWidth: '300pt',
     height: '200pt',
-    minHeight: '200pt',
+    minHeight: '150pt',
     backgroundSize: 'cover',
     "@media (max-width: 800pt)": {
+      width: '100%',
       margin: 'auto',
+      borderRadius: '0pt',
     },
+    
   },
   title: {
     textTransform: 'uppercase',
@@ -44,8 +51,12 @@ const useStyles = makeStyles({
   text: {   
     "@media (min-width: 800pt)": {
       marginRight: '60pt',
+      marginTop: '-20pt'
     },
     maxWidth: '500pt',
+    "@media (max-width: 800pt)": {
+      minHeight: '300pt',
+    },
   }
 });
 const InfoCarrusel = (props) => {
