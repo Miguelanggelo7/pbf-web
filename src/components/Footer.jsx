@@ -7,6 +7,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import EmailIcon from '@mui/icons-material/Email';
 import TermsDialog from './TermsDialog';
+import { Link as LinkS } from 'react-scroll';
 
 // ESTILOS
 const useStyles = makeStyles({
@@ -111,7 +112,7 @@ const Header = (props) => {
           <div className={classes.div1}/>
           <a className={classes.infoText} onClick={() => setOpen(true)}>Politica de privacidad</a>
           <div className={classes.div1}/>
-          <a className={classes.infoText}>Quienes somos</a>
+          <LinkS smooth={true} duration={1000} spy={true} exact='true' offset={-120} to="ideales" className={classes.infoText}>Ideales</LinkS>
         </div>
         <img className={classes.LogoFooter} src={LogoWomanSVG}/>
         <div className={classes.socialFooter}>

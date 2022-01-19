@@ -77,10 +77,9 @@ const Header = (props) => {
       <img className={classes.headerLogo} src={LogoTextSVG}/>
       <div className={classes.inlineDiv}> 
         <LinkS smooth={true} duration={1000} spy={true} exact='true' offset={-120} to="faciales" className={classes.headerButton}>Faciales</LinkS>
-        <a className={classes.headerButton}>Corporales</a>
-        <a className={classes.headerButton}>Muestras</a>
+        <LinkS smooth={true} duration={1000} spy={true} exact='true' offset={-120} to="corporales" className={classes.headerButton}>Corporales</LinkS>
         <div className={classes.divisor} />
-        <a className={classes.headerButton}>Sobre nosotros</a>
+        <LinkS smooth={true} duration={1000} spy={true} exact='true' offset={-120} to="sobreNosotros" className={classes.headerButton}>Sobre Nosotros</LinkS>
         <LinkR to="/form" className={classes.headerButton}>Agenda tu cita</LinkR>
       </div>
     </div>

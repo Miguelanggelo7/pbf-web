@@ -22,9 +22,9 @@ const useStyles = makeStyles({
     }
 });
 
-const SecondCarrusel = (props) => {
+const ThirdCarrusel = (props) => {
   const classes = useStyles();
-  const [faciales, setFaciales] = useState(null);
+  const [corporales, setCorporales] = useState(null);
 
   useEffect(() => {
     const getData = async() => {
@@ -37,7 +37,7 @@ const SecondCarrusel = (props) => {
       }
 
       const data = await response.json();
-      setFaciales(data);
+      setCorporales(data);
     }
 
     getData();
@@ -49,7 +49,7 @@ const SecondCarrusel = (props) => {
     <div className={classes.box}>
       <Swiper pagination={true} navigation={navigation} className="mySwiper" pagination={{"clickable" : true}} >
         {
-          faciales && faciales.map(item => (
+          corporales && corporales.map(item => (
             <SwiperSlide>
               <InfoCarrusel title={item.title} image={item.url} text={item.txt}/>
             </SwiperSlide>
@@ -60,4 +60,4 @@ const SecondCarrusel = (props) => {
   );
 };
 
-export default SecondCarrusel;
+export default ThirdCarrusel;
