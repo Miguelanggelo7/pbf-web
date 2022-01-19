@@ -54,8 +54,9 @@ const useStyles = makeStyles({
       marginTop: '-20pt'
     },
     maxWidth: '500pt',
+    minHeight: '300pt',
     "@media (max-width: 800pt)": {
-      minHeight: '320pt',
+      minHeight: '290pt',
     },
   }
 });
