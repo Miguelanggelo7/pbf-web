@@ -3,27 +3,47 @@ import { makeStyles } from "@material-ui/core";
 // ESTILOS
 const useStyles = makeStyles({
   infoContainer: {
-    "@media (min-width: 650pt)": {
+    "@media (min-width: 800pt)": {
       display: 'inline-flex',
     },
   },
   space: {
-    marginLeft: '100pt',
+    marginLeft: '20pt',
   },
   textStyle: {
     color: '#bbb',
   },
   contentImage: {
     width: '200pt',
+    minWidth: '200pt',
     height: '200pt',
+    marginLeft: '60pt',
+    "@media (max-width: 800pt)": {
+      width: '100%',
+      margin: 'auto',
+      marginLeft: '0pt',
+    },
+    backgroundSize: 'cover',
   },
   image: {
     borderRadius: '10pt',
+    width: '200pt',
+    minWidth: '200pt',
+    height: '200pt',
+    backgroundSize: 'cover',
+    "@media (max-width: 800pt)": {
+      margin: 'auto',
+    },
   },
   title: {
-    width: '100%',
     textTransform: 'uppercase',
     fontSize: '18pt',
+  },
+  text: {   
+    "@media (min-width: 800pt)": {
+      marginRight: '60pt',
+    },
+    maxWidth: '500pt',
   }
 });
 const InfoCarrusel = (props) => {
