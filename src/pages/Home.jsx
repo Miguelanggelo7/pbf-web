@@ -56,6 +56,16 @@ const useStyles = makeStyles({
       height: '200pt',
     },
   },
+  text3: {
+    textTransform: 'uppercase',
+    maxWidth: '85vw',
+    margin: 'auto',
+    "@media (max-width: 650pt)": {
+      maxWidth: '95vw',
+      paddingBottom: '10pt',
+    },
+    paddingBottom: '40pt',
+  }
 });
 
 function Home() {
@@ -70,14 +80,14 @@ function Home() {
       <Fade bottom>
         <div id="faciales" >
           <p className={classes.titleText}>FACIALES</p>
-          <p className={classes.text1}>Lo mejor para tu rostro solo lo conseguiras aqui en Perfect Body Fast, contamos con:</p>
+          <p className={classes.text3}>Lo mejor para tu rostro solo lo conseguiras aqui en Perfect Body Fast, contamos con:</p>
           <SecondCarrusel/>
         </div>
       </Fade>
       <Fade bottom>
         <div id="corporales" >
           <p className={classes.titleText}>CORPORALES</p>
-          <p className={classes.text1}>Lo mejor para tu cuerpo solo lo conseguiras aqui en Perfect Body Fast, contamos con:</p>
+          <p className={classes.text3}>Lo mejor para tu cuerpo solo lo conseguiras aqui en Perfect Body Fast, contamos con:</p>
           <ThirdCarrusel/>
         </div>
       </Fade>
