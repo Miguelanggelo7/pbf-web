@@ -28,7 +28,7 @@ const ThirdCarrusel = (props) => {
 
   useEffect(() => {
     const getData = async() => {
-      const response = await fetch("http://localhost:4000/api/faciales", {
+      const response = await fetch("http://localhost:5000/api/faciales", {
         method: "GET",
       });
 
