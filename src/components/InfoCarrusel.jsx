@@ -16,6 +16,7 @@ const useStyles = makeStyles({
   contentImage: {
     width: '200pt',
     minWidth: '200pt',
+    minHeight: '200pt',
     height: '200pt',
     marginLeft: '60pt',
     "@media (max-width: 800pt)": {
@@ -30,6 +31,7 @@ const useStyles = makeStyles({
     width: '200pt',
     minWidth: '200pt',
     height: '200pt',
+    minHeight: '200pt',
     backgroundSize: 'cover',
     "@media (max-width: 800pt)": {
       margin: 'auto',
