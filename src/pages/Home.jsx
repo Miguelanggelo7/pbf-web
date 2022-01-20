@@ -62,10 +62,12 @@ const useStyles = makeStyles({
     width: '60%',
     height: '250pt',
     marginBottom: '20pt',
+    marginTop: '-30pt',
     borderRadius: '10pt',
     "@media (max-width: 650pt)": {
       width: '80%',
       height: '200pt',
+      marginTop: '0',
     },
   },
   text3: {
