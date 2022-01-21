@@ -34,7 +34,7 @@ const Carrusel = (props) => {
   const classes = useStyles();
 
   useEffect(async () => {
-    const response = await fetch("http://localhost:5000/api/carrousel", {
+    const response = await fetch("https://pbf-api.herokuapp.com/api/carrousel", {
       method: "GET",
     });
 

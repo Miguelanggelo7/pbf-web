@@ -76,13 +76,47 @@ const useStyles = makeStyles({
   },
 });
 
-function Home() {
+const Form = () => {
   const classes = useStyles();
   const [isChecked, setIsChecked] = useState(false);
+  const [name, setName] = useState("");
+  const [tlf, setTlf] = useState("+34");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
   const [open, setOpen] = useState(false);
 
   const acceptTerms = () => {
     isChecked ? setIsChecked(false) : setIsChecked(true);
+  };
+
+  const sendEmail = async() => {
+    const data = {
+      name,
+      tlf,
+      email,
+      message
+    };
+
+    const res = await fetch("https://pbf-api.herokuapp.com/api/message/email", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if(!res.ok) {
+      return;
+    }
+    console.log("listo")
+
+  };
+
+  const handleChange = (event) => {
+    if(!event.target) setTlf(event);
+    else if (event.target.id === "name") setName(event.target.value);
+    else if (event.target.id === "email") setEmail(event.target.value);
+    else if (event.target.id === "message") setMessage(event.target.value);
   }
 
   return (
@@ -93,13 +127,13 @@ function Home() {
       <br/>
       <p className={classes.titleText}>Agenda tu cita</p>
       <div className={classes.inputContainer}>
-        <TextField color="secondary" placeholder='Ingresa tu nombre' label="Nombre Completo" variant="standard" className={classes.inputForm}/>
+        <TextField color="secondary" placeholder='Ingresa tu nombre' id="name" label="Nombre Completo" variant="standard" className={classes.inputForm} onChange={handleChange}/>
         <br/>
-        <MuiPhoneNumber style={{marginTop: '20pt', }} label="Teléfono" color="secondary" className={classes.inputForm} defaultCountry={'es'} />
+        <MuiPhoneNumber style={{marginTop: '20pt', }} label="Teléfono" color="secondary" className={classes.inputForm} defaultCountry={'es'} id="tlf" onChange={handleChange} lang="Spanish"/>
         <br/>
-        <TextField color="secondary" placeholder='Ingresa tu email' label="Email" variant="standard" className={classes.inputForm}/>
+        <TextField color="secondary" id="email" placeholder='Ingresa tu email' label="Email" variant="standard" className={classes.inputForm} onChange={handleChange} />
         <br/>
-        <TextField color="secondary" rows={4} multiline placeholder='Tu descripción aquí...' label="Descripción de tu cita" variant="standard" className={classes.inputForm}/>
+        <TextField color="secondary" id="message" rows={4} multiline placeholder='Tu descripción aquí...' label="Descripción de tu cita" variant="standard" className={classes.inputForm} onChange={handleChange}/>
         <br/>
         <div className={classes.terms}>
           <Checkbox 
@@ -112,7 +146,7 @@ function Home() {
           <p className={classes.termsText}>Acepto la <a className={classes.linkTerms} onClick={() => setOpen(true)}>política de privacidad y de protección de datos</a></p>
         </div>
         <br/>
-        <Button disabled={!isChecked} className={classes.buttonForm}>
+        <Button disabled={!isChecked} className={classes.buttonForm} onClick={sendEmail}>
           ENVIAR
         </Button>
 
@@ -124,4 +158,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Form;

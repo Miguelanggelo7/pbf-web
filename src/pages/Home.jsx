@@ -1,11 +1,11 @@
 import React from 'react';
-import Carrusel from '../components/Carrusel';
+import Carrusel from '../components/MainCarrousel';
 import Header from '../components/Header';
-import SecondCarrusel from '../components/SecondCarrusel';
+import SecondCarrusel from '../components/FacialCarrousel';
 import Footer from '../components/Footer';
 import { makeStyles, List, ListItem, Paper } from "@material-ui/core";
 import Fade from "react-reveal";
-import ThirdCarrusel from '../components/ThirdCarrusel';
+import ThirdCarrusel from '../components/CorporalCarrousel';
 
 const useStyles = makeStyles({
   text2: {
@@ -111,7 +111,7 @@ const useStyles = makeStyles({
   }
 });
 
-function Home() {
+const Home = () => {
   const classes = useStyles();
   
   const elevat = window.matchMedia("(min-width: 650pt)").matches ? 4 : 0;

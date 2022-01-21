@@ -22,13 +22,13 @@ const useStyles = makeStyles({
     }
 });
 
-const ThirdCarrusel = (props) => {
+const SecondCarrusel = (props) => {
   const classes = useStyles();
-  const [corporales, setCorporales] = useState(null);
+  const [faciales, setFaciales] = useState(null);
 
   useEffect(() => {
     const getData = async() => {
-      const response = await fetch("http://localhost:5000/api/corporales", {
+      const response = await fetch("https://pbf-api.herokuapp.com/api/faciales", {
         method: "GET",
       });
 
@@ -37,7 +37,7 @@ const ThirdCarrusel = (props) => {
       }
 
       const data = await response.json();
-      setCorporales(data);
+      setFaciales(data);
     }
 
     getData();
@@ -49,7 +49,7 @@ const ThirdCarrusel = (props) => {
     <div className={classes.box}>
       <Swiper pagination={true} navigation={navigation} className="mySwiper" pagination={{"clickable" : true}} >
         {
-          corporales && corporales.map(item => (
+          faciales && faciales.map(item => (
             <SwiperSlide>
               <InfoCarrusel title={item.title} image={item.url} text={item.txt}/>
             </SwiperSlide>
@@ -60,4 +60,4 @@ const ThirdCarrusel = (props) => {
   );
 };
 
-export default ThirdCarrusel;
+export default SecondCarrusel;
