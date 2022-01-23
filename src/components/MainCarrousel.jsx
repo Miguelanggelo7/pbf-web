@@ -29,23 +29,8 @@ const useStyles = makeStyles({
   },
 });
 
-const Carrusel = (props) => {
-  const [carrousel, setCarrousel] = useState(null);
+const Carrusel = ({ carrousel, ...props }) => {
   const classes = useStyles();
-
-  useEffect(async () => {
-    const response = await fetch("https://pbf-api.herokuapp.com/api/carrousel", {
-      method: "GET",
-    });
-
-    if (!response.ok) {
-      console.log("error")
-    }
-
-    const data = await response.json();
-    console.log(data)
-    setCarrousel(data);
-  }, []);
 
   const CarouselUI = ({ position, handleClick, children }) => (
     <div className={classes.carrusel}>

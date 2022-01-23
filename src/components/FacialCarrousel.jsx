@@ -22,26 +22,9 @@ const useStyles = makeStyles({
     }
 });
 
-const SecondCarrusel = (props) => {
+const SecondCarrusel = ({ faciales, ...props }) => {
   const classes = useStyles();
-  const [faciales, setFaciales] = useState(null);
 
-  useEffect(() => {
-    const getData = async() => {
-      const response = await fetch("https://pbf-api.herokuapp.com/api/faciales", {
-        method: "GET",
-      });
-
-      if (!response.ok) {
-        console.log("error")
-      }
-
-      const data = await response.json();
-      setFaciales(data);
-    }
-
-    getData();
-  }, []);
 
   const navigation = window.matchMedia("(min-width: 650pt)").matches ? true : false;
   

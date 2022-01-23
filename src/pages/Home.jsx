@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Carrusel from '../components/MainCarrousel';
 import Header from '../components/Header';
 import SecondCarrusel from '../components/FacialCarrousel';
@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import { makeStyles, List, ListItem, Paper } from "@material-ui/core";
 import Fade from "react-reveal";
 import ThirdCarrusel from '../components/CorporalCarrousel';
+import Loading from '../components/Loading';
 
 const useStyles = makeStyles({
   text2: {
@@ -113,13 +114,76 @@ const useStyles = makeStyles({
 
 const Home = () => {
   const classes = useStyles();
-  
+  const [carrousel, setCarrousel] = useState(null);
+  const [faciales, setFaciales] = useState(null);
+  const [corporales, setCorporales] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   const elevat = window.matchMedia("(min-width: 650pt)").matches ? 4 : 0;
+
+  useEffect(() => {
+
+    const getDataCarrousel = async () => {
+      const response = await fetch("https://pbf-api.herokuapp.com/api/carrousel", {
+        method: "GET",
+      });
+
+      if (!response.ok) {
+        console.log("error");
+      }
+
+      const data = await response.json();
+      setCarrousel(data);
+    };
+
+    const getDataFacial = async () => {
+      const response = await fetch("https://pbf-api.herokuapp.com/api/faciales", {
+        method: "GET",
+      });
+
+      if (!response.ok) {
+        console.log("error");
+      }
+
+      const data = await response.json();
+      setFaciales(data);
+    };
+
+    const getDataCorporal = async () => {
+      const response = await fetch("https://pbf-api.herokuapp.com/api/corporales", {
+        method: "GET",
+      });
+
+      if (!response.ok) {
+        console.log("error");
+      }
+
+      const data = await response.json();
+      setCorporales(data);
+    };
+
+    getDataCarrousel();
+    getDataCorporal();
+    getDataFacial();
+  }, []);
+
+  const interval = setInterval(() => {
+    if (carrousel && faciales && corporales) {
+      setLoading(false);
+      clearInterval(interval);
+    } 
+  }, 2000);
+
+  if (loading) {
+    return(
+      <Loading />
+    )
+  }
 
   return (
     <div>
-      <Header/>
-      <Carrusel/>
+      <Header />
+      <Carrusel {...{carrousel}}/>
       <Fade bottom>
         <p className={classes.text2}>CONSULTA GRATIS PARA CADA UNO DE NUESTROS SERVICIOS</p>
       </Fade>
@@ -127,21 +191,21 @@ const Home = () => {
         <div id="faciales" >
           <p className={classes.titleText}>FACIALES</p>
           <p className={classes.text3}>Lo mejor para tu rostro solo lo conseguiras aqui en Perfect Body Fast, contamos con:</p>
-          <SecondCarrusel/>
+          <SecondCarrusel {...{faciales}}/>
         </div>
       </Fade>
       <Fade bottom>
         <div id="corporales" >
           <p className={classes.titleText}>CORPORALES</p>
           <p className={classes.text3}>Lo mejor para tu cuerpo solo lo conseguiras aqui en Perfect Body Fast, contamos con:</p>
-          <ThirdCarrusel/>
+          <ThirdCarrusel {...{corporales}}/>
         </div>
       </Fade>
       <Fade bottom>
         <div className={classes.nosotrosContainer} id="sobreNosotros" >
           <p className={classes.titleText}>SOBRE NOSOTROS</p>
           <p className={classes.text3}>Somos una organización dedicada a la medicina y cirugía estética con una atención profesional, especializado en cada área, amable y personalizada con cada uno de nuestros pacientes,  preparados para atenderlo en cualquier tipo de necesidad estética que requiera, ofrecemos tratamientos faciales y corporales, permitiéndoles mejorar su juventud, vitalidad y belleza,  con un alto grado de calidad, atendemos con dedicación y pasión.</p> 
-          <img className={classes.imageNosotros} src="https://medica.orbitpublishers.com/wp-content/uploads/2021/06/guia-para-abrir-un-consultorio-medico.jpg"/>
+          <img className={classes.imageNosotros} src="../assets/logoprueba.png"/>
           <div  className={classes.idealesCards} id="ideales" style={{marginTop: '10pt', marginBottom: '10pt'}}>
            <Fade bottom>
             <Paper elevation={elevat} className={classes.card}>

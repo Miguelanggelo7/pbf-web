@@ -1,4 +1,4 @@
-import React, {Suspense, lazy} from 'react';
+import React, {Suspense, lazy, useState, useEffect} from 'react';
 import './App.css';
 import Form from "./pages/Form";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -8,6 +8,7 @@ import {
 } from "@material-ui/core/styles";
 import TermsDialog from './components/TermsDialog';
 import Fade from 'react-reveal';
+import Home from "./pages/Home";
 import Loading from './components/Loading';
 
 const theme = createMuiTheme({
@@ -23,17 +24,29 @@ const theme = createMuiTheme({
   },
 });
 
-const Home = lazy(() => {
-  return new Promise(resolve => {
-    setTimeout(() => resolve(import("./pages/Home")), 4000);
-  });
-});
 
-function App() {
+
+const App = () => {
+  
+
+  // useEffect(() => {
+  //   if (loading) {
+  //     setTimeout(() => <Loading />, 4000);
+  //   }
+  // }, [loading]);
+  
+  
+
+
+  // const Home = lazy(() => { 
+  //   return new Promise(resolve => {
+  //     setTimeout(() => resolve(import("./pages/Home")), 4000);
+  //   });
+  // });
+
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        <Suspense fallback={<Loading/>} >
           <Router>  
             <Switch>
               <Route exact path="/">
@@ -47,7 +60,6 @@ function App() {
               </Route>
             </Switch>
           </Router>
-        </Suspense>
       </ThemeProvider>
     </div>
   );

@@ -22,26 +22,8 @@ const useStyles = makeStyles({
     }
 });
 
-const ThirdCarrusel = (props) => {
+const ThirdCarrusel = ({ corporales, ...props }) => {
   const classes = useStyles();
-  const [corporales, setCorporales] = useState(null);
-
-  useEffect(() => {
-    const getData = async() => {
-      const response = await fetch("https://pbf-api.herokuapp.com/api/corporales", {
-        method: "GET",
-      });
-
-      if (!response.ok) {
-        console.log("error")
-      }
-
-      const data = await response.json();
-      setCorporales(data);
-    }
-
-    getData();
-  }, []);
 
   const navigation = window.matchMedia("(min-width: 650pt)").matches ? true : false;
   
