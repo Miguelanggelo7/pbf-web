@@ -7,9 +7,8 @@ import {
   ThemeProvider,
 } from "@material-ui/core/styles";
 import TermsDialog from './components/TermsDialog';
-import Fade from 'react-reveal';
 import Home from "./pages/Home";
-import Loading from './components/Loading';
+import Cookie from "universal-cookie";
 
 const theme = createMuiTheme({
   palette: {
@@ -27,23 +26,6 @@ const theme = createMuiTheme({
 
 
 const App = () => {
-  
-
-  // useEffect(() => {
-  //   if (loading) {
-  //     setTimeout(() => <Loading />, 4000);
-  //   }
-  // }, [loading]);
-  
-  
-
-
-  // const Home = lazy(() => { 
-  //   return new Promise(resolve => {
-  //     setTimeout(() => resolve(import("./pages/Home")), 4000);
-  //   });
-  // });
-
   return (
     <div className="App">
       <ThemeProvider theme={theme}>

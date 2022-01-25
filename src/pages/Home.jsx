@@ -7,6 +7,7 @@ import { makeStyles, List, ListItem, Paper } from "@material-ui/core";
 import Fade from "react-reveal";
 import ThirdCarrusel from '../components/CorporalCarrousel';
 import Loading from '../components/Loading';
+import Cookie from "universal-cookie";
 
 const useStyles = makeStyles({
   text2: {
@@ -119,10 +120,17 @@ const Home = () => {
   const [corporales, setCorporales] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  window.onbeforeunload = () => {
+    const cookie = new Cookie();
+    const diff = Math.abs(cookie.get("timeIn") - Date.now());
+    const seconds = Math.floor(diff/1000);
+    cookie.set("secondsInWeb", seconds , {path: "/"});
+  }
+
   const elevat = window.matchMedia("(min-width: 650pt)").matches ? 4 : 0;
 
   useEffect(() => {
-
+    const cookie = new Cookie();
     const getDataCarrousel = async () => {
       const response = await fetch("https://pbf-api.herokuapp.com/api/carrousel", {
         method: "GET",
