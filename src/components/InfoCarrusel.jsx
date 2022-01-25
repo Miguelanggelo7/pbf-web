@@ -51,12 +51,13 @@ const useStyles = makeStyles({
   text: {   
     "@media (min-width: 800pt)": {
       marginRight: '60pt',
-      marginTop: '-20pt'
+      marginTop: '-20pt',
     },
     maxWidth: '500pt',
     minHeight: '300pt',
     "@media (max-width: 800pt)": {
       minHeight: '290pt',
+      maxWidth: '90vw',
     },
   }
 });
