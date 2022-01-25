@@ -7,6 +7,8 @@ import { makeStyles, List, ListItem, Paper } from "@material-ui/core";
 import Fade from "react-reveal";
 import ThirdCarrusel from '../components/CorporalCarrousel';
 import Loading from '../components/Loading';
+import logoPrueba from '../assets/logoprueba.png';
+import Cookies from '../components/Cookies';
 
 const useStyles = makeStyles({
   text2: {
@@ -60,12 +62,12 @@ const useStyles = makeStyles({
     fontSize: '15pt',
   },
   imageNosotros: {
-    width: '60%',
+    width: '250pt',
     height: '250pt',
     marginBottom: '20pt',
-    marginTop: '-30pt',
+    marginTop: '-20pt',
     borderRadius: '10pt',
-    "@media (max-width: 650pt)": {
+    "@media (max-width: 400pt)": {
       width: '80%',
       height: '200pt',
       marginTop: '0',
@@ -184,6 +186,7 @@ const Home = () => {
     <div>
       <Header />
       <Carrusel {...{carrousel}}/>
+      <Cookies/>
       <Fade bottom>
         <p className={classes.text2}>CONSULTA GRATIS PARA CADA UNO DE NUESTROS SERVICIOS</p>
       </Fade>
@@ -205,7 +208,7 @@ const Home = () => {
         <div className={classes.nosotrosContainer} id="sobreNosotros" >
           <p className={classes.titleText}>SOBRE NOSOTROS</p>
           <p className={classes.text3}>Somos una organización dedicada a la medicina y cirugía estética con una atención profesional, especializado en cada área, amable y personalizada con cada uno de nuestros pacientes,  preparados para atenderlo en cualquier tipo de necesidad estética que requiera, ofrecemos tratamientos faciales y corporales, permitiéndoles mejorar su juventud, vitalidad y belleza,  con un alto grado de calidad, atendemos con dedicación y pasión.</p> 
-          <img className={classes.imageNosotros} src="../assets/logoprueba.png"/>
+          <img className={classes.imageNosotros} src={logoPrueba}/>
           <div  className={classes.idealesCards} id="ideales" style={{marginTop: '10pt', marginBottom: '10pt'}}>
            <Fade bottom>
             <Paper elevation={elevat} className={classes.card}>

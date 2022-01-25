@@ -1,0 +1,66 @@
+
+  .ulCookies,
+  .liCookies {
+    padding: 0;
+    margin: 0;
+    z-index: 1000;
+  }
+
+  .textCookies {
+      font-size: 10pt;
+      width: 330px;
+      margin-top: 15pt;
+      margin-left: 10pt;
+  }
+  
+  .ulCookies {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    justify-content: flex-end;
+  }
+  
+  .liCookies {
+    width: 400px;
+    background-color:thistle;
+    margin: 10px;
+    flex: 0 0 100px;
+    position: relative;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 400pt) {
+    .liCookies {
+      width: 95vw;
+    }
+    .textCookies {
+        width: 80vw;
+        margin-top: 15pt;
+        margin-left: 10pt;
+    }
+  }
+
+  #buttonCookies {
+    outline: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    color: #fff;
+  }
+  
+  .buttonCloseCookies {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: #fff;
+  }
+  
+  .buttonCloseCookies:hover {
+    cursor: pointer;
+  }
+  
