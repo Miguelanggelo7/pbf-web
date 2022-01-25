@@ -8,6 +8,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import EmailIcon from '@mui/icons-material/Email';
 import TermsDialog from './TermsDialog';
 import { Link as LinkS } from 'react-scroll';
+import CookiesDialog from "./CookiesDialog";
 
 // ESTILOS
 const useStyles = makeStyles({
@@ -104,6 +105,7 @@ const useStyles = makeStyles({
 const Header = (props) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
+  const [openC, setOpenC] = useState(false);
 
   return (
     <div className={classes.containerFooter}>
@@ -112,7 +114,7 @@ const Header = (props) => {
           <div className={classes.div1}/>
           <a className={classes.infoText} onClick={() => setOpen(true)}>Politica de privacidad</a>
           <div className={classes.div1}/>
-          <LinkS smooth={true} duration={1000} spy={true} exact='true' offset={-120} to="ideales" className={classes.infoText}>Ideales</LinkS>
+          <a className={classes.infoText} onClick={() => setOpenC(true)}>Política de cookies</a>
         </div>
         <img className={classes.LogoFooter} src={LogoWomanSVG}/>
         <div className={classes.socialFooter}>
@@ -138,6 +140,7 @@ const Header = (props) => {
       </div>
 
       <TermsDialog open={open} onClose={() => setOpen(false)} />
+      <CookiesDialog open={openC} onClose={() => setOpenC(false)} />
     </div>  
   )
 };

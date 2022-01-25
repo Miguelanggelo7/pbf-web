@@ -18,7 +18,7 @@ const TermsDialog = (props) => {
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
   
   return (
-    <Dialog className={classes.dialog} open={props.open} onClose={props.onClose} fullWidth fullScreen={fullScreen}>
+    <Dialog disableScrollLock className={classes.dialog} open={props.open} onClose={props.onClose} fullWidth fullScreen={fullScreen}>
       <DialogTitle id="alert-dialog-title">
         {"POLÍTICA DE PRIVACIDAD"}
       </DialogTitle>
