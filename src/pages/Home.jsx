@@ -121,6 +121,7 @@ const Home = () => {
   const [faciales, setFaciales] = useState(null);
   const [corporales, setCorporales] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [show, setShow] = useState(false);
 
   window.onbeforeunload = () => {
     const cookie = new Cookie();
@@ -133,6 +134,12 @@ const Home = () => {
 
   useEffect(() => {
     const cookie = new Cookie();
+    if(typeof cookie.get("timeIn") === "undefined") setShow(true);
+
+    const now = new Date();
+    const expire = now.setDate(now.getDate() + 7);
+    cookie.set("timeIn", Date.now(), {path: "/", expires: new Date(expire)});
+
     const getDataCarrousel = async () => {
       const response = await fetch("https://pbf-api.herokuapp.com/api/carrousel", {
         method: "GET",
@@ -194,7 +201,9 @@ const Home = () => {
     <div>
       <Header />
       <Carrusel {...{carrousel}}/>
-      <Cookies/>
+      {
+        show ? <Cookies /> : null
+      }
       <Fade bottom>
         <p className={classes.text2}>CONSULTA GRATIS PARA CADA UNO DE NUESTROS SERVICIOS</p>
       </Fade>
