@@ -39,6 +39,7 @@ const useStyles = makeStyles({
     backgroundSize: 'cover',
     "@media (max-width: 800pt)": {
       width: '100%',
+      minWidth: '100%',
       margin: 'auto',
       borderRadius: '0pt',
     },
@@ -55,9 +56,10 @@ const useStyles = makeStyles({
     },
     maxWidth: '500pt',
     minHeight: '300pt',
+    textAlign: 'center',
     "@media (max-width: 800pt)": {
       minHeight: '290pt',
-      maxWidth: '90vw',
+      maxWidth: '95vw',
     },
   }
 });
