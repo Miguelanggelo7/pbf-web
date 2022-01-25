@@ -17,9 +17,11 @@ const useStyles = makeStyles({
   },
   textStyle: {
     color: '#bbb',
+    marginBottom: '40pt',
     "@media (max-width: 800pt)": {
       maxWidth: '95vw',
       margin: 'auto',
+      marginBottom: '30pt',
     },
   },
   contentImage: {
@@ -64,9 +66,7 @@ const useStyles = makeStyles({
       marginTop: '-20pt',
     },
     maxWidth: '500pt',
-    minHeight: '300pt',
     "@media (max-width: 800pt)": {
-      minHeight: '290pt',
       margin: 'auto',
     },
   }
