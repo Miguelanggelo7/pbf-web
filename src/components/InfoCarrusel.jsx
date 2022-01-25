@@ -4,8 +4,12 @@ import { makeStyles } from "@material-ui/core";
 const useStyles = makeStyles({
   infoContainer: {
     justifyContent: 'center',
+    textAlign: 'center',
     "@media (min-width: 800pt)": {
       display: 'inline-flex',
+    },
+    "@media (max-width: 800pt)": {
+      minWidth: '100%',
     },
   },
   space: {
@@ -13,6 +17,10 @@ const useStyles = makeStyles({
   },
   textStyle: {
     color: '#bbb',
+    "@media (max-width: 800pt)": {
+      maxWidth: '95vw',
+      margin: 'auto',
+    },
   },
   contentImage: {
     width: '200pt',
@@ -48,6 +56,7 @@ const useStyles = makeStyles({
   title: {
     textTransform: 'uppercase',
     fontSize: '18pt',
+    textAlign: 'center',
   },
   text: {   
     "@media (min-width: 800pt)": {
@@ -56,10 +65,9 @@ const useStyles = makeStyles({
     },
     maxWidth: '500pt',
     minHeight: '300pt',
-    textAlign: 'center',
     "@media (max-width: 800pt)": {
       minHeight: '290pt',
-      maxWidth: '95vw',
+      margin: 'auto',
     },
   }
 });
