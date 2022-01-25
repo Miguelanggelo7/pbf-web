@@ -3,6 +3,17 @@ import { useState } from "react";
 import "./Cookies.css";
 import { motion, AnimatePresence } from "framer-motion";
 import CookiesDialog from "./CookiesDialog";
+import { makeStyles } from "@material-ui/core";
+
+// ESTILOS
+const useStyles = makeStyles({
+    linkCookies: {
+        textDecoration: 'underline',
+        "&:hover": {
+            cursor: 'pointer',
+        },
+    }
+});
 
 const Path = props => (
   <motion.path
@@ -26,6 +37,7 @@ const Path = props => (
 const Cookies = () => {
   const [showCookies, setShowCookies] = useState(false);
   const [openC, setOpenC] = useState(false);
+  const classes = useStyles();
 
   const remove = () => {
     setShowCookies(!showCookies);
@@ -46,7 +58,7 @@ const Cookies = () => {
               <CloseButton
                 close={remove}
               />
-              <p className="textCookies">Usamos cookies para mejorar tu experiencia, analizar nuestro tráfico de seguridad y marketing. Al visitar nuestro sitio web, aceptas nuestro uso de cookies. <a style={{textDecoration: 'underline'}} onClick={() => setOpenC(true)}>Lee nuestra política de cookies</a></p>
+              <p className="textCookies">Usamos cookies para mejorar tu experiencia, analizar nuestro tráfico de seguridad y marketing. Al visitar nuestro sitio web, aceptas nuestro uso de cookies. <a className={classes.linkCookies} onClick={() => setOpenC(true)}>Lee nuestra política de cookies</a></p>
             </motion.li>
         </AnimatePresence>
       </ul>
