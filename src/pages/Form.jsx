@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
-import { makeStyles, TextField, Button, Dialog, Card } from "@material-ui/core";
+import { makeStyles, TextField, Button, CircularProgress } from "@material-ui/core";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import MuiPhoneNumber from 'material-ui-phone-number';
 import Checkbox from '@mui/material/Checkbox';
 import { Link } from "react-router-dom";
 import TermsDialog from '../components/TermsDialog';
+import { useSnackbar } from "notistack"; 
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   backIcon: {
@@ -78,18 +80,29 @@ const useStyles = makeStyles({
 
 const Form = () => {
   const classes = useStyles();
+  const { enqueueSnackbar } = useSnackbar();
+  const history = useHistory();
   const [isChecked, setIsChecked] = useState(false);
   const [name, setName] = useState("");
   const [tlf, setTlf] = useState("+34");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const acceptTerms = () => {
     isChecked ? setIsChecked(false) : setIsChecked(true);
   };
 
   const sendEmail = async() => {
+    if(name === "" || tlf === "+34" || tlf === "" || tlf === "+" || email === "" || message === ""){
+      return enqueueSnackbar("Debe rellenar todos los campos", {
+        variant: "warning"
+      });
+    }
+
+    setLoading(true);
+
     const data = {
       name,
       tlf,
@@ -97,20 +110,41 @@ const Form = () => {
       message
     };
 
-    const res = await fetch("https://pbf-api.herokuapp.com/api/message/email", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    try {
+      const res = await fetch("https://pbf-api.herokuapp.com/api/message/email", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    if(!res.ok) {
-      return;
+      if(!res.ok) {
+        setLoading(false);
+        return enqueueSnackbar("Se ha producido un error al enviar formulario", {
+          variant: "error"
+        });
+      };
+      
+      setLoading(false);
+
+      const interval = setInterval(() => {
+        history.push("/");
+        clearInterval(interval);
+      }, 1500);
+
+      return enqueueSnackbar("Formulario enviado correctamente, redirigiendo a la pantalla principal", {
+        variant: "success"
+      });
+
+    } catch (err) {
+      setLoading(false);
+      return enqueueSnackbar("Se ha producido un error al enviar formulario", {
+        variant: "error"
+      });
     }
-    console.log("listo")
-
   };
+  
 
   const handleChange = (event) => {
     if(!event.target) setTlf(event);
@@ -146,8 +180,9 @@ const Form = () => {
           <p className={classes.termsText}>Acepto la <a className={classes.linkTerms} onClick={() => setOpen(true)}>política de privacidad y de protección de datos</a></p>
         </div>
         <br/>
-        <Button disabled={!isChecked} className={classes.buttonForm} onClick={sendEmail}>
-          ENVIAR
+        <Button disabled={!isChecked || loading} className={classes.buttonForm} onClick={sendEmail}>
+          {loading ? "ENVIANDO" : "ENVIAR"}
+          {loading && <CircularProgress size="15pt" color="inherit" style={{ marginLeft: "10pt" }}/>}
         </Button>
 
         <TermsDialog open={open} onClose={() => setOpen(false)} />

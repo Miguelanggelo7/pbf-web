@@ -8,7 +8,7 @@ import {
 } from "@material-ui/core/styles";
 import TermsDialog from './components/TermsDialog';
 import Home from "./pages/Home";
-import Cookie from "universal-cookie";
+import { SnackbarProvider } from "notistack";
 
 const theme = createMuiTheme({
   palette: {
@@ -29,19 +29,21 @@ const App = () => {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-          <Router>  
-            <Switch>
-              <Route exact path="/">
-                <Home/>
-              </Route>
-              <Route exact path="/form">
-                <Form />
-              </Route>
-              <Route exact path="/terms">
-                <TermsDialog/>
-              </Route>
-            </Switch>
-          </Router>
+          <SnackbarProvider maxSnack={3}>
+            <Router>  
+              <Switch>
+                <Route exact path="/">
+                  <Home/>
+                </Route>
+                <Route exact path="/form">
+                  <Form />
+                </Route>
+                <Route exact path="/terms">
+                  <TermsDialog/>
+                </Route>
+              </Switch>
+            </Router>
+          </SnackbarProvider>
       </ThemeProvider>
     </div>
   );
