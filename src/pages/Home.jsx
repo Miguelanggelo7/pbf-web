@@ -10,6 +10,7 @@ import Loading from '../components/Loading';
 import logoPrueba from '../assets/logoprueba.png';
 import Cookies from '../components/Cookies';
 import Cookie from "universal-cookie";
+import { useSnackbar } from "notistack"; 
 
 const useStyles = makeStyles({
   text2: {
@@ -117,6 +118,7 @@ const useStyles = makeStyles({
 
 const Home = () => {
   const classes = useStyles();
+  const { enqueueSnackbar } = useSnackbar();
   const [carrousel, setCarrousel] = useState(null);
   const [faciales, setFaciales] = useState(null);
   const [corporales, setCorporales] = useState(null);
@@ -146,7 +148,9 @@ const Home = () => {
       });
 
       if (!response.ok) {
-        console.log("error");
+        return enqueueSnackbar("Se ha producido un error al comunicarse con el servidor", {
+          variant: "error"
+        })
       }
 
       const data = await response.json();
@@ -159,7 +163,9 @@ const Home = () => {
       });
 
       if (!response.ok) {
-        console.log("error");
+        return enqueueSnackbar("Se ha producido un error al comunicarse con el servidor", {
+          variant: "error"
+        })
       }
 
       const data = await response.json();
@@ -172,7 +178,9 @@ const Home = () => {
       });
 
       if (!response.ok) {
-        console.log("error");
+        return enqueueSnackbar("Se ha producido un error al comunicarse con el servidor", {
+          variant: "error"
+        })
       }
 
       const data = await response.json();
