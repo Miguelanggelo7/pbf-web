@@ -122,26 +122,11 @@ const Home = () => {
   const [carrousel, setCarrousel] = useState(null);
   const [faciales, setFaciales] = useState(null);
   const [corporales, setCorporales] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
-
-  window.onbeforeunload = () => {
-    const cookie = new Cookie();
-    const diff = Math.abs(cookie.get("timeIn") - Date.now());
-    const seconds = Math.floor(diff/1000);
-    cookie.set("secondsInWeb", seconds , {path: "/"});
-  }
-
   const elevat = window.matchMedia("(min-width: 650pt)").matches ? 4 : 0;
 
   useEffect(() => {
-    const cookie = new Cookie();
-    if(typeof cookie.get("timeIn") === "undefined") setShow(true);
-
-    const now = new Date();
-    const expire = now.setDate(now.getDate() + 7);
-    cookie.set("timeIn", Date.now(), {path: "/", expires: new Date(expire)});
-
     const getDataCarrousel = async () => {
       const response = await fetch("https://pbf-api.herokuapp.com/api/carrousel", {
         method: "GET",
@@ -187,17 +172,17 @@ const Home = () => {
       setCorporales(data);
     };
 
-    getDataCarrousel();
-    getDataCorporal();
-    getDataFacial();
+    // getDataCarrousel();
+    // getDataCorporal();
+    // getDataFacial();
   }, []);
 
-  const interval = setInterval(() => {
-    if (carrousel && faciales && corporales) {
-      setLoading(false);
-      clearInterval(interval);
-    } 
-  }, 2000);
+  // const interval = setInterval(() => {
+  //   if (carrousel && faciales && corporales) {
+  //     setLoading(false);
+  //     clearInterval(interval);
+  //   } 
+  // }, 2000);
 
   if (loading) {
     return(
