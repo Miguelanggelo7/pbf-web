@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, {
@@ -64,6 +64,13 @@ const SecondCarrusel = ( props ) => {
             title="Aumento de labios" 
             image={aumentoLabios} 
             text={faciales["aumento de labios"]}
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <InfoCarrusel 
+            title="Aumento de mentón" 
+            image={aumentoMenton} 
+            text={faciales["aumento de mentón"]}
           />
         </SwiperSlide>
         <SwiperSlide>

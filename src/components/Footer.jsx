@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import { IconButton, makeStyles, Box } from "@material-ui/core";
+import React, { useState } from "react";
+import { IconButton, makeStyles } from "@material-ui/core";
 import LogoWomanSVG from "../assets/logoWoman.svg"
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
@@ -7,7 +7,6 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import EmailIcon from '@mui/icons-material/Email';
 import TermsDialog from './TermsDialog';
-import { Link as LinkS } from 'react-scroll';
 import CookiesDialog from "./CookiesDialog";
 
 // ESTILOS
@@ -57,7 +56,6 @@ const useStyles = makeStyles({
       display: 'table',
       justifyContent: 'center',
       alignItems: 'center',
-      textAlign: 'center',
     },
     socialFooter: {
       width: '33vw',

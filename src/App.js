@@ -1,4 +1,4 @@
-import React, {Suspense, lazy, useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Form from "./pages/Form";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -9,6 +9,7 @@ import {
 import TermsDialog from './components/TermsDialog';
 import Home from "./pages/Home";
 import { SnackbarProvider } from "notistack";
+import Loading from "./components/Loading";
 
 const theme = createMuiTheme({
   palette: {
@@ -26,6 +27,17 @@ const theme = createMuiTheme({
 
 
 const App = () => {
+  const [loading, setLoading] = useState(true);
+
+  const interval = setInterval(() => {
+    setLoading(false)
+    clearInterval(interval);
+  }, 2000);
+
+  if (loading) {
+    return <Loading />
+  }
+
   return (
     <div className="App">
       <ThemeProvider theme={theme}>

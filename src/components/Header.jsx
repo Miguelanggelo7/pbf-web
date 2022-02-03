@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { makeStyles } from "@material-ui/core";
 import LogoTextSVG from "../assets/logoText.svg";
-import { animateScroll as scroll } from 'react-scroll';
 import { Link as LinkS } from 'react-scroll';
 import { Link as LinkR } from 'react-router-dom';
 

@@ -13,6 +13,7 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "@trendyol-js/react-carousel": "^2.0.1",
+    "emailjs-com": "^3.2.0",
     "framer-motion": "^6.2.3",
     "material-ui-phone-number": "^3.0.0",
     "notistack": "^2.0.3",

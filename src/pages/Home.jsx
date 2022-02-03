@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Carrusel from '../components/MainCarrousel';
 import Header from '../components/Header';
 import SecondCarrusel from '../components/FacialCarrousel';
@@ -6,11 +6,8 @@ import Footer from '../components/Footer';
 import { makeStyles, List, ListItem, Paper } from "@material-ui/core";
 import Fade from "react-reveal";
 import ThirdCarrusel from '../components/CorporalCarrousel';
-import Loading from '../components/Loading';
 import logoPrueba from '../assets/logoprueba.png';
 import Cookies from '../components/Cookies';
-import Cookie from "universal-cookie";
-import { useSnackbar } from "notistack"; 
 
 const useStyles = makeStyles({
   text2: {
@@ -118,82 +115,13 @@ const useStyles = makeStyles({
 
 const Home = () => {
   const classes = useStyles();
-  const { enqueueSnackbar } = useSnackbar();
-  const [carrousel, setCarrousel] = useState(null);
-  const [faciales, setFaciales] = useState(null);
-  const [corporales, setCorporales] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
   const elevat = window.matchMedia("(min-width: 650pt)").matches ? 4 : 0;
-
-  useEffect(() => {
-    const getDataCarrousel = async () => {
-      const response = await fetch("https://pbf-api.herokuapp.com/api/carrousel", {
-        method: "GET",
-      });
-
-      if (!response.ok) {
-        return enqueueSnackbar("Se ha producido un error al comunicarse con el servidor", {
-          variant: "error"
-        })
-      }
-
-      const data = await response.json();
-      setCarrousel(data);
-    };
-
-    const getDataFacial = async () => {
-      const response = await fetch("https://pbf-api.herokuapp.com/api/faciales", {
-        method: "GET",
-      });
-
-      if (!response.ok) {
-        return enqueueSnackbar("Se ha producido un error al comunicarse con el servidor", {
-          variant: "error"
-        })
-      }
-
-      const data = await response.json();
-      setFaciales(data);
-    };
-
-    const getDataCorporal = async () => {
-      const response = await fetch("https://pbf-api.herokuapp.com/api/corporales", {
-        method: "GET",
-      });
-
-      if (!response.ok) {
-        return enqueueSnackbar("Se ha producido un error al comunicarse con el servidor", {
-          variant: "error"
-        })
-      }
-
-      const data = await response.json();
-      setCorporales(data);
-    };
-
-    // getDataCarrousel();
-    // getDataCorporal();
-    // getDataFacial();
-  }, []);
-
-  // const interval = setInterval(() => {
-  //   if (carrousel && faciales && corporales) {
-  //     setLoading(false);
-  //     clearInterval(interval);
-  //   } 
-  // }, 2000);
-
-  if (loading) {
-    return(
-      <Loading />
-    )
-  }
 
   return (
     <div>
       <Header />
-      <Carrusel {...{carrousel}}/>
+      <Carrusel />
       {
         show ? <Cookies /> : null
       }
@@ -204,14 +132,14 @@ const Home = () => {
         <div id="faciales" >
           <p className={classes.titleText}>FACIALES</p>
           <p className={classes.text3}>Lo mejor para tu rostro solo lo conseguiras aqui en Perfect Body Fast, contamos con:</p>
-          <SecondCarrusel {...{faciales}}/>
+          <SecondCarrusel/>
         </div>
       </Fade>
       <Fade bottom>
         <div id="corporales" >
           <p className={classes.titleText}>CORPORALES</p>
           <p className={classes.text3}>Lo mejor para tu cuerpo solo lo conseguiras aqui en Perfect Body Fast, contamos con:</p>
-          <ThirdCarrusel {...{corporales}}/>
+          <ThirdCarrusel />
         </div>
       </Fade>
       <Fade bottom>

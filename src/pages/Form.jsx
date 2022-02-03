@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import TermsDialog from '../components/TermsDialog';
 import { useSnackbar } from "notistack"; 
 import { useHistory } from "react-router-dom";
+import emailjs from "emailjs-com";
 
 const useStyles = makeStyles({
   backIcon: {
@@ -103,29 +104,16 @@ const Form = () => {
 
     setLoading(true);
 
-    const data = {
-      name,
-      tlf,
-      email,
-      message
-    };
-
     try {
-      const res = await fetch("https://pbf-api.herokuapp.com/api/message/email", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if(!res.ok) {
-        setLoading(false);
-        return enqueueSnackbar("Se ha producido un error al enviar formulario", {
-          variant: "error"
-        });
+      const data = {
+        name, 
+        email,
+        tlf,
+        message
       };
-      
+
+      await emailjs.send('default_service', 'template_7pt59ve', data, 'user_uhJHkbaa6tRCiPW9Xf6as');
+    
       setLoading(false);
 
       const interval = setInterval(() => {
