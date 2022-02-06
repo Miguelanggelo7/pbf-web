@@ -17,7 +17,6 @@ const useStyles = makeStyles({
     marginTop: '50pt',
   },
   text1: {
-    textTransform: 'uppercase',
     maxWidth: '85vw',
     margin: 'auto',
     "@media (max-width: 650pt)": {
@@ -76,7 +75,6 @@ const useStyles = makeStyles({
     },
   },
   text3: {
-    textTransform: 'uppercase',
     maxWidth: '85vw',
     margin: 'auto',
     "@media (max-width: 650pt)": {
@@ -93,7 +91,7 @@ const useStyles = makeStyles({
   card: {
     "@media (min-width: 1000pt)": {
       width: '20vw',
-      height: '320pt',
+      height: '340pt',
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
@@ -105,7 +103,7 @@ const useStyles = makeStyles({
       width: '50vw',
       marginLeft: '20pt',
       marginRight: '20pt',
-      height: '320pt',
+      height: '340pt',
     },
     marginBottom: '20pt',
   },

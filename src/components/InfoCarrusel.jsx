@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     marginLeft: '20pt',
   },
   textStyle: {
-    color: '#bbb',
+    color: '#999999',
     marginBottom: '40pt',
     "@media (max-width: 800pt)": {
       maxWidth: '95vw',
