@@ -34,8 +34,9 @@ const useStyles = makeStyles({
     marginLeft: '23pt',
     marginRight: '23pt',
     textTransform: 'uppercase',
+    fontWeight: 'bold',
     '&:hover': {
-      color: '#8E7AA7',
+      textDecoration: 'underline',
       cursor: 'pointer',
       transition: 'all .5s'
    },
@@ -75,10 +76,10 @@ const Header = (props) => {
     <div className={classes.headerBackground}>
       <img className={classes.headerLogo} src={LogoTextSVG}/>
       <div className={classes.inlineDiv}> 
-        <LinkS smooth={true} duration={1000} spy={true} exact='true' offset={-120} to="faciales" className={classes.headerButton}>Faciales</LinkS>
-        <LinkS smooth={true} duration={1000} spy={true} exact='true' offset={-120} to="corporales" className={classes.headerButton}>Corporales</LinkS>
+        <LinkS smooth={true} duration={1000} spy={true} exact='true' offset={-113} to="faciales" className={classes.headerButton}>Faciales</LinkS>
+        <LinkS smooth={true} duration={1000} spy={true} exact='true' offset={-113} to="corporales" className={classes.headerButton}>Corporales</LinkS>
         <div className={classes.divisor} />
-        <LinkS smooth={true} duration={1000} spy={true} exact='true' offset={-120} to="sobreNosotros" className={classes.headerButton}>Sobre Nosotros</LinkS>
+        <LinkS smooth={true} duration={1000} spy={true} exact='true' offset={-113} to="sobreNosotros" className={classes.headerButton}>Sobre Nosotros</LinkS>
         <LinkR to="/form" className={classes.headerButton}>Agenda tu cita</LinkR>
       </div>
     </div>
